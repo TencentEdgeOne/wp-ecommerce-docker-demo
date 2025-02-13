@@ -1,0 +1,46 @@
+services:
+  wordpress:
+    image: wordpress:6.7.1-php8.3-apache
+    build: ./wordpress
+    ports:
+      - "80:${WP_HOST}"
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DEBUG=1
+      - WORDPRESS_CONFIG_EXTRA=
+        define('WP_MEMORY_LIMIT', '512M');
+        define('WP_CACHE', true);
+        define('WP_DEBUG', false);
+        define('WP_DEBUG_LOG', false);
+        define('WP_DEBUG_DISPLAY', false);
+        define('WP_HOME', '${WP_HOME_URL}');
+        define('WP_SITEURL', '${WP_HOME_URL}');
+        define('GRAPHQL_JWT_AUTH_SECRET_KEY', '${GRAPHQL_JWT_AUTH_SECRET_KEY}');
+        define('JWT_AUTH_SECRET_KEY', '${GRAPHQL_JWT_AUTH_SECRET_KEY}');
+        define('JWT_AUTH_CORS_ENABLE', true);
+    volumes:
+      - ./wordpress/wordpress-data:/var/www/html
+      - ./wordpress/custom-htaccess:/var/www/html/.htaccess
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    build: ./mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - WP_DOMAIN=${WP_DOMAIN}
+      - WP_HOST=${WP_HOST}
+      - INIT_DELAY=0.5
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  wordpress_data:
+  db_data:

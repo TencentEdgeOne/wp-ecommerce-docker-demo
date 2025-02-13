@@ -1,0 +1,5 @@
+.env
+*.pem
+.DS_Store
+**/debug.log
+build.log

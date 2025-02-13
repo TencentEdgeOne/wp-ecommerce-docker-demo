@@ -1,0 +1,11 @@
+# Dockerfile
+FROM mysql:latest
+
+COPY db-init/data.sql /app/db-init/
+RUN chmod 644 /app/db-init/data.sql
+
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["mysqld"]
+
