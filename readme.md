@@ -19,3 +19,6 @@ This project includes all template-adapted data that will be automatically impor
 
 #### Step 3: Verify WordPress Installation
 Access `http://your.site.ip/wp-admin/admin.php` to verify if the service is running successfully.
+The default admin login info is
+UserName: admin, Password: 12345
+Remember to change your password after logged in to ensure safety of your site.
