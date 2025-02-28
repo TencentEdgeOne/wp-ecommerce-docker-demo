@@ -10,7 +10,7 @@ MYSQL_PASSWORD=wordpress123
 GRAPHQL_JWT_AUTH_SECRET_KEY=your-hwt-auth-secret-key
 WP_HOME_URL=http://localhost // your site url
 WP_DOMAIN=localhost // your site domain
-WP_HOST=8080 // your site port
+WP_HOST=80 // your site port
 ```
 
 #### Step 2: Start Docker Containers
