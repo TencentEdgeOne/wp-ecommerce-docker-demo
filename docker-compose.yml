@@ -28,7 +28,7 @@ services:
       - db
 
   db:
-    image: mysql:latest
+    image: mysql:9
     build: ./mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}

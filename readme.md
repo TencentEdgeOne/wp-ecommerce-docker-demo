@@ -22,3 +22,6 @@ Access `http://your.site.ip/wp-admin/admin.php` to verify if the service is runn
 The default admin login info is
 UserName: admin, Password: 12345
 Remember to change your password after logged in to ensure safety of your site.
+
+#### Hareware requirement
+To ensure the frontend application can properly access service data, please confirm the server meets the minimum hardware requirements of 2 CPU cores and 2GB RAM.

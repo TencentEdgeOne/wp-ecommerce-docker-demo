@@ -1,5 +1,5 @@
 # Dockerfile
-FROM mysql:latest
+FROM mysql:9
 
 COPY db-init/data.sql /app/db-init/
 RUN chmod 644 /app/db-init/data.sql
